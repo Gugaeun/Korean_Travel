@@ -1,0 +1,47 @@
+<!--
+  [finder.html]
+  기능 : 산책로 조건 검색 필터
+  UI   : 어두운 녹색 배경 / 4개 드롭다운 필터
+         01 걷고 싶은 장소(서울/제주) → 02 세부 장소(지역별 코스 목록 동적 생성)
+         03 산책 가능한 시간 → 04 함께 걷는 사람 / 내 산책로 찾기 버튼
+-->
+ 
+<section class="finder" aria-labelledby="finderTitle">
+  <div class="finder-inner">
+    <div class="finder-heading">
+      <div><p class="section-kicker">FIND YOUR WALK</p><h2 id="finderTitle">어떤 산책을 원하세요?</h2></div>
+      <p>네 가지만 알려주시면<br>당신에게 맞는 길을 찾아드려요.</p>
+    </div>
+    <div class="filters">
+      <label class="filter-field"><span><b>01</b> 걷고 싶은 장소</span>
+        <select id="wt-region" onchange="updatePlaceOptions()">
+          <option value="all">&nbsp;지역 상관없어요</option>
+          <option value="seoul">&nbsp;서울</option>
+          <option value="jeju">&nbsp;제주</option>
+        </select>
+      </label>
+      <label class="filter-field"><span><b>02</b> 세부 장소</span>
+        <select id="wt-place">
+          <option value="all">장소 상관없어요</option>
+        </select>
+      </label>
+      <label class="filter-field"><span><b>03</b> 산책 가능한 시간</span>
+        <select id="wt-duration">
+          <option value="all">&nbsp;상관없어요</option>
+          <option value="quick">&nbsp;1시간 이내</option>
+          <option value="normal" selected>&nbsp;1 - 2시간</option>
+          <option value="long">&nbsp;2시간 이상</option>
+        </select>
+      </label>
+      <label class="filter-field"><span><b>04</b> 함께 걷는 사람</span>
+        <select id="wt-people">
+          <option value="solo">&nbsp;혼자</option>
+          <option value="couple" selected>&nbsp;둘이서</option>
+          <option value="group">&nbsp;3명 이상</option>
+          <option value="family">&nbsp;아이와 함께</option>
+        </select>
+      </label>
+      <button class="recommend-button" id="recommendButton" type="button">내 산책로 찾기 &nbsp;<span>☞</span></button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,70 @@
+/*
+ * [base.css]
+ * 기능 : 전역 CSS 변수(색상·그림자·반경), 리셋, body 기본 스타일
+ * UI   : 모든 컴포넌트의 공통 토대 — 이 파일이 없으면 색상/폰트 전체가 깨짐
+ */
+
+/* ── CSS Variables ── */
+:root {
+  --accent:       #2D4A2D;
+  --accent-dark:  #353535;
+  --accent-light: #f6f5f0;
+  --jeju-green:   #2D4A2D;
+  --jeju-light:   #eef6ed;
+  --bg:           #f6f5f0;
+  --dark:         #1a1a18;
+  --white:        #fff;
+  --g100: #f4f1eb;
+  --g200: #e8e5df;
+  --g300: #d0cdc5;
+  --g500: #888;
+  --g700: #555;
+  --green-dark:  #2D4A2D;
+  --green-mid:   #e85a2b;
+  --green-light: #f6f5f0;
+  --sand:        #f6f5f0;
+  --g900:        #1a1a18;
+  --jeju:        #2D4A2D;
+  --seoul:       #2D4A2D;
+  --rsm: 6px; --rmd: 12px; --rlg: 16px;
+  --sh1: 0 1px 4px rgba(0,0,0,.08);
+  --sh2: 0 6px 28px rgba(0,0,0,.16);
+}
+
+/* ── Reset ── */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+
+/* ── Body 기본 ── */
+body {
+  font-family:'Noto Sans KR',sans-serif;
+  background:var(--bg); color:var(--dark);
+  overflow-x:hidden; line-height:1.7;
+  min-width:auto;
+}
+
+/* ── 공통 섹션 레이블·타이틀 ── */
+.sec-label  { font-size:11px; font-weight:600; letter-spacing:2.5px; color:var(--accent); text-transform:uppercase; margin-bottom:8px; }
+.sec-title  { font-family:'Noto Serif KR',serif; font-size:26px; font-weight:700; color:var(--dark); line-height:1.2; }
+.sec-header {
+  display:flex; align-items:flex-end; justify-content:space-between;
+  margin-bottom:24px; padding-top:56px;
+}
+
+/* ── 배지(Badge) — 지역·테마 라벨 ── */
+.badge { font-size:10px; font-weight:700; padding:3px 8px; border-radius:9px; }
+.bj   { background:var(--jeju-light);   color:var(--jeju-green); }
+.bs   { background:var(--accent-light); color:#c0341a; }
+.bn   { background:#e8f5ed; color:#2e7d32; }
+.bc   { background:#f3effe; color:#6342c2; }
+.bsea { background:#e0f7fa; color:#00838f; }
+.bsolo{ background:#fff8e1; color:#c67a00; }
+.bcpl { background:#fce4ec; color:#c2185b; }
+.bfam { background:#e8f5e9; color:#2e7d32; }
+
+/* ── REVEAL 스크롤 애니메이션 ── */
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.55s ease, transform 0.55s ease; }
+.reveal.vis { opacity:1; transform:none; }
+.rd1 { transition-delay:.08s; }
+.rd2 { transition-delay:.16s; }
+.rd3 { transition-delay:.24s; }

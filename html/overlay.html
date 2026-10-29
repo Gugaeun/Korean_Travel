@@ -1,0 +1,39 @@
+<!--
+  [overlay.html]
+  기능 : 전역 오버레이 UI — 팝업 모달 + 사이드 드로어 2종
+  UI   :
+    ① 팝업 모달(.pop-ov) — 소개/코스/후기/코스상세/맛집상세/날씨/보관함
+       JS가 #popBox 안에 내용을 동적으로 주입하여 재사용
+    ② 지금 가기 좋은 곳 드로어(#featuredDrawer) — 계절별 추천 명소 목록
+    ③ 서울/제주 명소 드로어(#spotDrawer) — 지역 명소 상세 목록
+-->
+
+<!-- ① 팝업 모달 -->
+<div class="pop-ov" id="popOv" onclick="closePop(event)">
+  <div class="pop-box" id="popBox"></div>
+</div>
+
+<!-- ② 지금 가기 좋은 곳 드로어 -->
+<div class="spot-drawer" id="featuredDrawer" onclick="closeFeaturedDrawer(event)">
+  <div class="sd-panel">
+    <div class="sd-header">
+      <div>
+        <div class="fm-season" id="fmSeason"></div>
+        <div class="sd-title">지금 가기 좋은 곳</div>
+      </div>
+      <button class="sd-close" onclick="closeFeaturedDrawer()">✕</button>
+    </div>
+    <div class="sd-list" id="fmList"></div>
+  </div>
+</div>
+
+<!-- ③ 서울/제주 명소 드로어 -->
+<div class="spot-drawer" id="spotDrawer" onclick="closeSpotDrawer(event)">
+  <div class="sd-panel">
+    <div class="sd-header">
+      <div class="sd-title" id="sdTitle"></div>
+      <button class="sd-close" onclick="closeSpotDrawer()">✕</button>
+    </div>
+    <div class="sd-list" id="sdList"></div>
+  </div>
+</div>

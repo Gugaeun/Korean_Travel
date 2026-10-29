@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+  [index.html]
+  기능 : 페이지 진입점 (쉘) — 실제 UI 코드는 html/ 폴더의 컴포넌트 파일에 있음
+  UI   : 빈 플레이스홀더들을 loader.js가 fetch로 채운 뒤 앱을 초기화
+
+  컴포넌트 로드 순서:
+    html/topbar.html  → 상단 고정 네비게이션 바
+    html/hero.html    → 메인 히어로 배너
+    html/finder.html  → 산책로 조건 검색 필터
+    html/slider.html  → 사진 슬라이더 캐러셀
+    html/map.html     → 카카오맵 산책 코스 플래너
+    html/overlay.html → 팝업 모달 + 드로어
+    html/footer.html  → 페이지 하단 푸터
+-->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>산책 ON — 서울 · 제주 산책 코스 가이드</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-region="seoul">
+
+  <!-- 각 플레이스홀더는 loader.js가 html/ 폴더의 파일로 교체함 -->
+  <div id="comp-topbar"></div>
+  <div id="comp-hero"></div>
+  <div id="comp-finder"></div>
+  <div id="comp-slider"></div>
+  <div id="comp-map"></div>
+  <div id="comp-overlay"></div>
+  <div id="comp-finder-result"></div>
+  <div id="comp-footer"></div>
+
+  <!-- loader.js: HTML 컴포넌트 주입 → 스크립트 로드 → initApp() 호출 -->
+  <script src="js/loader.js"></script>
+
+</body>
+</html>

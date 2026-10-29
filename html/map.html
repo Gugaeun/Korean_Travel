@@ -1,0 +1,70 @@
+<!--
+  [map.html]
+  기능 : 카카오맵 기반 선 거리 측정 도구
+  UI   : 서울/제주 지역 탭 / 맛집·초기화 버튼 /
+         카카오맵 캔버스(클릭으로 선을 그려 거리 측정, 안내 문구는 캔버스 우측 상단에 표시) /
+         우측 패널(거리·소요시간 결과 + 위험 안내 공지)
+         - 로드뷰 버튼 제거
+         - 정해진 코스 · 자유 코스 기능은 제거하고 선 거리 측정 기능만 남김
+-->
+
+<div class="map-section" id="map-section">
+  <div class="map-inner reveal">
+
+    <div class="map-sec-head">
+      <div>
+        <div class="sec-label">지도에서 산책 코스 찾기</div>
+        <h2>카카오맵 <em>산책 코스 플래너</em></h2>
+      </div>
+    </div>
+
+    <!-- 지역 탭 -->
+    <div class="map-rtabs">
+      <button class="map-rtab s on" id="tabS" onclick="setMapRegion('seoul')"><span class="dot"></span>서울</button>
+      <button class="map-rtab j"    id="tabJ" onclick="setMapRegion('jeju')"><span class="dot"></span>제주</button>
+    </div>
+
+    <div class="map-layout">
+      <!-- 지도 영역 -->
+      <div class="map-wrap">
+        <div class="map-toolbar">
+          <div class="mt-actions">
+            <button class="mt-btn on" id="freeToggle" onclick="toggleFreeCourse()">🎈 자유 코스</button>
+            <button class="mt-btn on" id="foodToggle" onclick="toggleFoodMarkers()">🍽 맛집</button>
+            <button class="mt-btn"    onclick="resetMap()">↺ 초기화</button>
+          </div>
+        </div>
+        <div class="map-canvas" id="mapCanvas">
+          <div id="kakaoMap"></div>
+          <!-- #roadview 는 SDK 초기화에 필요 — 버튼만 제거하고 div 는 유지 -->
+          <div id="roadview" style="display:none"></div>
+          <div class="map-fallback" id="mapFallback" style="display:none"></div>
+          <!-- 선 거리 측정 안내 — 지도 캔버스 우측 상단에 항상 표시 -->
+          <div class="dm-hint-overlay" id="mapDrawHint">
+            <span>🖱 지도를 클릭하면 선 그리기 시작</span>
+            <span>🖱 오른쪽 클릭하면 선 그리기 종료</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측 패널 -->
+      <div class="course-panel">
+        <!-- 거리·소요시간 측정 -->
+        <div class="notice-box measure-box">
+          <div class="notice-hd"><h4 id="measureTitle">📏 거리 · 소요시간</h4></div>
+          <div class="measure-body" id="measureBody"></div>
+        </div>
+        <!-- 위험 안내 공지 -->
+        <div class="notice-box notice-box-courses">
+          <div class="notice-hd">
+            <h4 id="noticeTitle">🔔 위험 안내 공지</h4>
+            <button class="notice-add" title="실시간 안내">!</button>
+          </div>
+          <div class="notice-list" id="noticeList"></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="map-creditline">📍 지도는 <strong>카카오맵 API</strong>로 제공됩니다.</p>
+  </div>
+</div>

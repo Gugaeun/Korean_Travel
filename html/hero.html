@@ -1,0 +1,25 @@
+<!--
+  [hero.html]
+  기능 : 메인 페이지 첫 화면 히어로 배너
+  UI   : 배경 사진(서울/제주 전환) / 메인 카피 텍스트 /
+         서울·제주 지역 선택 탭 (클릭 시 배경·문구 전환)
+-->
+
+<section class="hero" id="recommend">
+  <div class="hero-art" aria-hidden="true">
+    <div class="hero-photo hero-photo-main"></div>
+    <div class="hero-photo hero-photo-detail"></div>
+    <p class="hero-place"><span>SEOUL</span> City meets forest</p>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="eyebrow">WALK SLOWLY, FEEL DEEPLY</p>
+      <h1>도시와 자연 사이,<br><b><em>나만의 속도</em></b>를 찾아요.</h1>
+      <p class="hero-copy">오늘의 기분과 시간에 꼭 맞는 길을 골라드릴게요.<br>가볍게 걷고, 오래 기억하세요.</p>
+      <div class="region-tabs" role="tablist" aria-label="지역 선택">
+        <button class="region-tab active" data-region="seoul" role="tab" aria-selected="true"><span>SEOUL</span>서울</button>
+        <button class="region-tab" data-region="jeju" role="tab" aria-selected="false"><span>JEJU</span>제주</button>
+      </div>
+    </div>
+  </div>
+</section>

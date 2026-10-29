@@ -1,0 +1,43 @@
+<!--
+  [slider.html]
+  기능 : 산책 코스 사진 슬라이더 캐러셀
+  UI   : 전체/서울/제주 탭 필터 / 좌우 화살표 / 3장씩 보이는 슬라이드 트랙 /
+         하단 페이지 도트 인디케이터 / 4초 자동 재생
+-->
+
+<section class="photo-slider-sec">
+  <div class="ps-inner">
+    <div class="ps-header">
+      <div class="ps-tabs">
+        <button class="ps-tab active" onclick="setPsRegion('all',this)">전체</button>
+        <button class="ps-tab" onclick="setPsRegion('seoul',this)">서울</button>
+        <button class="ps-tab" onclick="setPsRegion('jeju',this)">제주</button>
+      </div>
+    </div>
+    <div class="ps-viewer-wrap">
+      <button class="ps-arrow ps-prev" onclick="psPrev()" aria-label="이전">&#8249;</button>
+      <button class="ps-arrow ps-next" onclick="psNextBtn()" aria-label="다음">&#8250;</button>
+      <div class="ps-viewer">
+        <div class="ps-track">
+          <!-- 서울 -->
+          <div class="ps-slide" data-region="seoul" style="background-image:url('images/용산가족공원.png')"><div class="ps-label"><span>서울</span>용산가족공원</div></div>
+          <div class="ps-slide" data-region="seoul" style="background-image:url('images/용산공원.png')"><div class="ps-label"><span>서울</span>용산공원</div></div>
+          <div class="ps-slide" data-region="seoul" style="background-image:url('images/남산타워.png')"><div class="ps-label"><span>서울</span>남산타워</div></div>
+          <div class="ps-slide" data-region="seoul" style="background-image:url('images/남산야외식물원.png')"><div class="ps-label"><span>서울</span>남산야외식물원</div></div>
+          <div class="ps-slide" data-region="seoul" style="background-image:url('images/남산순환둘레길.png')"><div class="ps-label"><span>서울</span>남산순환둘레길</div></div>
+          <div class="ps-slide" data-region="seoul" style="background-image:url('images/청계천.png')"><div class="ps-label"><span>서울</span>청계천</div></div>
+          <div class="ps-slide" data-region="seoul" style="background-image:url('images/잠수교.png')"><div class="ps-label"><span>서울</span>잠수교</div></div>
+          <!-- 제주 -->
+          <div class="ps-slide" data-region="jeju" style="background-image:url('images/한라산국립공원.png')"><div class="ps-label"><span>제주</span>한라산국립공원</div></div>
+          <div class="ps-slide" data-region="jeju" style="background-image:url('images/제주곶자왈도립공원.png')"><div class="ps-label"><span>제주</span>제주곶자왈도립공원</div></div>
+          <div class="ps-slide" data-region="jeju" style="background-image:url('images/서귀포해양도립공원.png')"><div class="ps-label"><span>제주</span>서귀포해양도립공원</div></div>
+          <div class="ps-slide" data-region="jeju" style="background-image:url('images/성산일출해양도립공원.png')"><div class="ps-label"><span>제주</span>성산일출해양도립공원</div></div>
+          <div class="ps-slide" data-region="jeju" style="background-image:url('images/상가리야자숲.png')"><div class="ps-label"><span>제주</span>상가리야자숲휴양림</div></div>
+          <div class="ps-slide" data-region="jeju" style="background-image:url('images/절물자연휴양림.png')"><div class="ps-label"><span>제주</span>절물자연휴양림</div></div>
+          <div class="ps-slide" data-region="jeju" style="background-image:url('images/비자림.png')"><div class="ps-label"><span>제주</span>비자림휴양림</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ps-dots" id="psDots"></div>
+  </div>
+</section>

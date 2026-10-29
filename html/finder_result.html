@@ -1,0 +1,83 @@
+<!--
+  [finder_result.html]
+  기능 : "내 산책로 찾기" 버튼 클릭 시 표시되는 추천 결과 팝업
+  UI   : 전체 화면 오버레이 / 필터 조건 요약 / 추천 코스 카드 그리드
+         카드 클릭 → 지도 이미지 뷰어 팝업(#mapViewOverlay) 표시
+         조건에 맞는 코스가 없을 경우 안내 메시지 표시
+  연결 : js/finder_result.js 에서 openFinderResult() / closeFinderResult() /
+         openMapView() / closeMapView() 호출
+-->
+
+<!-- ── 지도 이미지 뷰어 팝업 ──────────────────────────────
+     카드 클릭 시 열림 / 배경 클릭·ESC·닫기 버튼으로 닫힘
+     이미지가 여러 장(청계천 등)일 경우 좌우 화살표로 전환 -->
+<div id="mapViewOverlay" class="mv-overlay" onclick="closeMapView(event)" hidden>
+  <div class="mv-box" onclick="event.stopPropagation()">
+
+    <!-- 헤더 — position:sticky 로 스크롤해도 X 버튼 항상 노출 -->
+    <div class="mv-header">
+      <div>
+        <p class="mv-kicker">MAP VIEW</p>
+        <h3 id="mvTitle" class="mv-title"></h3>
+      </div>
+      <button class="fr-close mv-close-fixed" onclick="closeMapView()" aria-label="닫기">✕</button>
+    </div>
+
+    <!-- 장소 설명 — openMapView() 에서 동적으로 채움 -->
+    <p class="mv-desc" id="mvDesc"></p>
+
+    <!-- 탐방로 코스 목록 — 코스별 정보가 있는 경우(한라산 등)만 표시
+         js/finder_result.js 의 COURSE_TRAIL_LIST 에서 데이터를 가져옴 -->
+    <div class="mv-trails" id="mvTrails" hidden>
+      <p class="mv-trails-title">탐방로 코스</p>
+      <ul class="mv-trail-list" id="mvTrailList"></ul>
+    </div>
+
+    <!-- 이미지 뷰어 -->
+    <div class="mv-img-wrap">
+      <!-- 여러 장일 때만 표시되는 이전/다음 버튼 -->
+      <button class="mv-arrow mv-prev" id="mvPrev" onclick="mvStep(-1)" aria-label="이전">‹</button>
+      <img id="mvImg" class="mv-img" src="" alt="지도 이미지">
+      <button class="mv-arrow mv-next" id="mvNext" onclick="mvStep(1)" aria-label="다음">›</button>
+    </div>
+
+    <!-- 여러 장일 때 페이지 표시 (예: 1 / 2) -->
+    <p class="mv-pager" id="mvPager"></p>
+
+    <!-- 지도 이미지가 없는 코스 안내 -->
+    <div class="mv-no-map" id="mvNoMap" hidden>
+      <p>🗺 이 코스는 지도 이미지가 준비되지 않았어요.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 추천 결과 팝업 ────────────────────────────────────── -->
+<!-- 배경 딤 레이어 — 클릭 시 팝업 닫힘 -->
+<div id="finderResultOverlay" class="fr-overlay" onclick="closeFinderResult(event)" aria-modal="true" role="dialog" aria-labelledby="frTitle" hidden>
+
+  <!-- 팝업 본체 -->
+  <div class="fr-box" onclick="event.stopPropagation()">
+
+    <!-- 헤더 + 태그를 함께 sticky 고정 — 스크롤해도 항상 노출 -->
+    <div class="fr-sticky-head">
+      <div class="fr-header">
+        <div>
+          <p class="fr-kicker">RECOMMENDED WALKS</p>
+          <h2 id="frTitle" class="fr-title">추천 산책로</h2>
+        </div>
+        <button class="fr-close" onclick="closeFinderResult()" aria-label="닫기">✕</button>
+      </div>
+      <div class="fr-tags" id="frTags"></div>
+    </div>
+
+    <!-- 추천 코스 카드 목록 — finder_result.js 가 동적으로 채움 -->
+    <div class="fr-grid" id="frGrid"></div>
+
+    <!-- 결과 없음 안내 — 매칭 코스가 0개일 때만 표시 -->
+    <div class="fr-empty" id="frEmpty" hidden>
+      <p>😔 조건에 맞는 산책로가 없어요.<br>필터를 조금 넓혀 다시 검색해보세요.</p>
+    </div>
+
+  </div>
+</div>

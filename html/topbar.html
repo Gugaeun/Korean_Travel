@@ -1,0 +1,83 @@
+<!--
+  [topbar.html]
+  기능 : 페이지 최상단 고정 네비게이션 바
+  UI   : 브랜드 로고 / 소개·코스·후기 메뉴 (호버 드롭다운 포함) /
+         우측 날씨 표시바 / 보관함(북마크) 버튼
+-->
+ 
+<header class="topbar">
+  <div class="topbar-left">
+    <a class="brand" href="#" aria-label="산책ON 홈">
+      <span class="brand-mark"><i></i><i></i></span>
+      <span>산책 ON</span>
+    </a>
+    <nav aria-label="주요 메뉴">
+      <a href="#" onclick="event.preventDefault();openAboutPopup()">소개</a>
+      <div class="nav-drop-wrap">
+        <a href="#" onclick="event.preventDefault();openCoursesPopup()">코스</a>
+        <div class="nav-drop nav-drop-wide">
+          <div class="nd-col">
+            <div class="nd-region">서울</div>
+            <div class="nd-group">용산구</div>
+            <button onclick="openCourse('s_yongsan')">용산가족공원(국립중앙박물관)</button>
+            <button onclick="openCourse('s_yongsan_kbs')">용산공원반환부지(용산어린이정원)</button>
+            <button onclick="openCourse('s_yongsan_war')">용산공원(전쟁기념관)</button>
+            <button onclick="openCourse('s_namsan_tower')">남산타워(남산케이블카)</button>
+            <button onclick="openCourse('s_namsan_garden')">남산야외식물원</button>
+            <button onclick="openCourse('s_namsan')">남산순환둘레길</button>
+            <br>
+            <div class="nd-leaf-btn-wrap">
+            <div class="nd-group">종로구</div>
+              <button class="nd-leaf" onclick="openCourse('s_cheonggyecheon')">청계천</button><br>
+            <div class="nd-group">서초구</div>
+              <button class="nd-leaf" onclick="openCourse('s_jamsu')">잠수교</button>
+            </div>
+          </div>
+          <div class="nd-divider"></div>
+          <div class="nd-col">
+            <div class="nd-region">제주도</div>
+            <div class="nd-group">국립공원</div>
+            <button onclick="openCourse('j_halla')">한라산국립공원</button>
+            <br>
+            <div class="nd-group">도립공원</div>
+            <button onclick="openCourse('j_dongbaek')">제주곶자왈도립공원</button>
+            <button onclick="openCourse('j_seogwipo')">서귀포해양도립공원</button>
+            <button onclick="openCourse('j_seongsan')">성산일출해양도립공원</button>
+            <br>
+            <div class="nd-group">휴양림</div>
+            <button onclick="openCourse('j_sangari')">상가리야자숲휴양림</button>
+            <button onclick="openCourse('j_jeolmul')">절물자연휴양림</button>
+            <button onclick="openCourse('j_bija')">비지림휴양림</button>
+          </div>
+        </div>
+      </div>
+      <div class="nav-drop-wrap">
+        <a href="#" onclick="event.preventDefault();openReviewPopup('all')">후기</a>
+        <div class="nav-drop">
+          <div class="nav-region-group">
+            <button onclick="openReviewPopup('seoul')">서울</button>
+            <button onclick="openReviewPopup('jeju')">제주</button>          
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-weather" id="weatherBar" onclick="openWeatherPopup()" title="클릭하면 7일 날씨를 볼 수 있어요">
+      <span class="tw-label" id="topbarWeatherLabel">서울</span>
+      <span class="tw-icon" id="topbarWeatherIcon"></span>
+      <span class="tw-temp" id="topbarWeatherTemp">--</span>
+    </div>
+    <button class="saved-button" type="button" aria-label="보관함" onclick="openMyPage()">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.8A2.8 2.8 0 0 1 8.8 2h6.4A2.8 2.8 0 0 1 18 4.8V22l-6-3.8L6 22V4.8Z"/></svg>
+      <span class="saved-label">보관함</span><span id="savedCount">0</span>
+    </button>
+  </div>
+</header>
+ 
+<!-- 날씨 데이터 저장용 히든 컨테이너 -->
+<div style="display:none">
+  <div id="seoulWeather"></div>
+  <div id="jejuWeather"></div>
+</div>
+ 
